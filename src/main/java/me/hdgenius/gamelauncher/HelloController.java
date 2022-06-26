@@ -9,6 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.UUID;
 
 public class HelloController {
     @FXML
@@ -18,8 +19,8 @@ public class HelloController {
     protected void initialize() {
         try {
             final Collection<Game> games = Arrays.asList(
-                    new Game(null, "Minecraft", new URL("file://C:/Users/royth/Downloads/Minecraft_cover.png")),
-                    new Game(null, "Minecraft 2", new URL("https", "en.wikipedia.org", "/wiki/Minecraft#/media/File:Minecraft_cover.png"))
+                    new Game(UUID.randomUUID(), "Minecraft", new URL("https://en.wikipedia.org/wiki/Minecraft#/media/File:Minecraft_cover.png")),
+                    new Game(UUID.randomUUID(), "Call of Duty: Modern Warfare", new URL("https", "en.wikipedia.org", "/wiki/Minecraft#/media/File:Minecraft_cover.png"))
             );
             gamesList.getChildren().addAll(games.stream().map(GameView::new).toList());
         } catch (final MalformedURLException exception) {
