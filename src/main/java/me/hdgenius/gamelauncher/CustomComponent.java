@@ -12,12 +12,11 @@ public abstract class CustomComponent extends Pane {
         final Class<? extends CustomComponent> componentClass = this.getClass();
         final Viewable annotation = componentClass.getAnnotation(Viewable.class);
         final FXMLLoader fxmlLoader = new FXMLLoader(componentClass.getResource(annotation.value()));
-        // fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
+        fxmlLoader.setRoot(this);
 
         try {
-            final Node content = fxmlLoader.load();
-            this.getChildren().add(content);
+            fxmlLoader.load();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
